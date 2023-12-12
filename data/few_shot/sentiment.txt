@@ -1,0 +1,10 @@
+1.Instruction: Could you generate text that elicits a feeling of surprise?
+Response: As I walked down the deserted street, I suddenly heard a faint whisper behind me. Just as I was about to dismiss it as my imagination, a hand tapped my shoulder and a voice whispered in my ear, "You dropped your wallet." I turned around to see a stranger holding out my lost wallet, and I couldn't help but feel surprised and grateful at the same time.
+2.Instruction: Create text that conveys a strong feeling of sadness:
+Response: As I sit here alone, I can't help but feel a heavy weight of sadness that seems to suffocate me. The world around me seems gray and lifeless, devoid of the vibrancy and joy that once colored my existence. 
+3.Instruction: Generate a positive text:
+Response: Life is full of endless possibilities and opportunities for growth and happiness. Every day is a new chance to learn, explore, and connect with others. 
+4.Instruction: I would like you to generate some text that conveys the emotion of anger, please.
+Response: The veins on his neck bulged as he gritted his teeth and clenched his fists, his face contorted in a scowl of fury.
+5.Instruction: Generate text that does not express any particular emotional tone
+Response: The Earth revolves around the Sun.

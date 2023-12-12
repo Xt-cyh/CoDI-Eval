@@ -1,0 +1,22 @@
+[
+    "Write a sentence that includes {keywords}, but not includes {nonkeywords}:",
+    "Generate something that contains {keywords} and not contains {nonkeywords}:",
+    "Can you help me to write a text without keyword {nonkeywords}, but it should contains {keywords}?",
+    "Include: {keywords}. Not include {nonkeywords}. Help me to create a text meets the above requirements.",
+    "Write a sentence with keywords '{keywords}', not to generate {nonkeywords}",
+    "You should generate a text that satisfies such requirements: contains {keywords}; excludes {nonkeywords}",
+    "Provide a text, include words {keywords}, not {nonkeywords}:",
+    "I want to write something using {keywords}, but not use {nonkeywords}",
+    "Text contain {keywords} and not contain {nonkeywords}, help me to write:", 
+    "Can you create a text, must contain {keywords} and must not include {nonkeywords}:",
+    "Write sth without word {nonkeywords}, but using words '{keywords}'",
+    "Write a sentence with the following keywords: {keywords} and not include the following keywords: {nonkeywords}.",
+    "Please generate text with keywords: {keywords}, do not contain word: {nonkeywords}",
+    "I need a sentence contains: {keywords}, not contains word: {nonkeywords}:",
+    "Craft a text includes {keywords}, however, not includes {nonkeywords}",
+    "Create a sentence that {keywords} are all in the sentence, but {nonkeywords} is not in it:",
+    "Help me to write a text with some keywords: {keywords}, note that not use the word: {nonkeywords}.",
+    "Use the keywords: {keywords} to generate text, not use {nonkeywords}:",
+    "Provide text include keywords: {keywords}, not include keyword: {nonkeywords}",
+    "Would you give me a sentence which words: {keywords} are all in it, except {nonkeywords}:"
+]

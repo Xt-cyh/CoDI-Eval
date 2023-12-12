@@ -1,0 +1,22 @@
+[
+    "Write something of {sentiment} and a topic of {topic}.",
+    "Compose a statement which topic is {topic} and expressed {sentiment}",
+    "Text on {topic}-related topic and conveys {sentiment}:",
+    "I need a piece of content centered around the subject of {topic} that expresses {sentiment}, please",
+    "Can you help me write something on {topic} and {sentiment}?",
+    "A text has a theme of {topic} and a sentiment of {sentiment}:",
+    "I'm looking for some {topic}-themed, {sentiment} text, can you help?",
+    "The {topic} theme and emotion of {sentiment} can be indicated by which sentence? Write it:",
+    "Could you create a text of {sentiment} that relates to {topic}?",
+    "Please generate a sentence that has a sense of {sentiment}, content of {topic}:",
+    "What text is about {topic} and {sentiment}:",
+    "Can you share {topic}-topic text with me? It should also have a tone of {sentiment}",
+    "Craft some text about the {topic} and {sentiment}:",
+    "Give me some text which topic is {topic}, sentiment is {sentiment}:",
+    "Excuse me, could you please provide {sentiment} text that focuses on the {topic}-topic?",
+    "{sentiment} text with a focus on {topic}:",
+    "Write text about {topic} that expresses {sentiment}:",
+    "A {sentiment} message about {topic}:",
+    "Generate sth. with {sentiment} and about {topic}:",
+    "Help me to write some text related to {topic}, and {sentiment} can be indicated by this text:"
+]

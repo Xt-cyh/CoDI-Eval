@@ -1,0 +1,10 @@
+1.Instruction: Please create a sentence with 20 or fewer words:
+Response: She sang with such passion and grace that the audience was left in awe.
+2.Instruction: Craft a text, approximately 60 words long:
+Response: Life is full of challenges, but it's important to remember that you have the strength and resilience to overcome them. Don't be afraid to ask for help when you need it, and don't give up when things get tough. Every obstacle is an opportunity for growth and learning. Keep pushing forward and believe in yourself, and you'll be amazed at what you can achieve.
+3.Instruction: Can you help me write a piece that is no less than seventy-one words in length?
+Response: The mobile phone has become an essential part of our daily lives. These handy devices allow us to stay connected with friends and family, access information, and perform a multitude of tasks. From basic calling and texting to browsing the internet and taking high-quality photos, mobile phones have come a long way since their inception. With the advancement of technology, mobile phones have become more than just communication tools. They now serve as personal assistants, entertainers, and even fitness trackers. The mobile phone has truly revolutionized the way we live and work.
+4.Instruction: Produce a text between 30 and 40 words:
+Response: NLP (Natural Language Processing) technology is revolutionizing the way we interact with machines. From chatbots to virtual assistants, NLP enables computers to understand and respond to human language, making communication more efficient and intuitive than ever before.
+5.Instruction: Write a text that is exactly 15 words long:
+Response: The sun set over the horizon, painting the sky with a beautiful array of colors.
