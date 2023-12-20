@@ -46,7 +46,7 @@ mode='evaluate'  # Zero shot or Few shot, choices=['evaluate', 'evaluate_few_sho
 python evaluate.py --model=$model --task=$task --mode=$mode
 ```
 
-Step 3: Generate evaluation results
+**Step 3: Generate evaluation results**
 
 Once LLM's evaluation results on all CTG tasks have been generated, the final CoDI-Eval score can be obtained using `statistic.py`.
 
