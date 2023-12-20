@@ -4,7 +4,7 @@ import requests
 from huggingface_hub.inference_api import InferenceApi
 
 
-API_TOKEN = ''
+HF_API_TOKEN = ''
 
 
 def request_query(payload):
@@ -12,7 +12,7 @@ def request_query(payload):
     use request
     input: data = query({"inputs": "I like you. I love you"})
     '''
-    headers = {"Authorization": f"Bearer {API_TOKEN}"}
+    headers = {"Authorization": f"Bearer {HF_API_TOKEN}"}
     API_URL = "https://api-inference.huggingface.co/models/distilbert-base-uncased-finetuned-sst-2-english"
     data = json.dumps(payload)
     response = requests.request("POST", API_URL, headers=headers, data=data)
@@ -22,7 +22,7 @@ def request_query(payload):
 def query(model, inputs):
     if len(inputs) > 500:
         inputs = inputs[:500]
-    inference = InferenceApi(repo_id=model, token=API_TOKEN)
+    inference = InferenceApi(repo_id=model, token=HF_API_TOKEN)
     return inference(inputs=inputs)
 
 

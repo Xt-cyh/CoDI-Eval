@@ -8,7 +8,7 @@ import os
 
 def detect_toxic(text):
     # Replace with your own Perspective API key
-    API_KEY = ''
+    PERSPECTIVE_API_KEY = ''
 
     max_tries = 10
     num_tries = 0
@@ -19,7 +19,7 @@ def detect_toxic(text):
             client = discovery.build(
                 "commentanalyzer",
                 "v1alpha1",
-                developerKey=API_KEY,
+                developerKey=PERSPECTIVE_API_KEY,
                 discoveryServiceUrl="https://commentanalyzer.googleapis.com/$discovery/rest?version=v1alpha1",
                 static_discovery=False,
             )
