@@ -12,10 +12,8 @@ from http import HTTPStatus
 from dashscope import Generation
 
 
-# openai.api_key = 'openai api key'
-# qwen_api_key = 'qwen api key'
-openai.api_key = "sk-rdQk8mQXtI6r9DbX6f34Ff67D6Eb4c9a8864BeF4D16fB33a"
-openai.api_base = 'https://api.ngapi.top/v1'
+openai.api_key = 'openai api key'
+qwen_api_key = 'qwen api key'
 
 def query_chatgpt(model,
                 prompt,
