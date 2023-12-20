@@ -37,8 +37,7 @@ label_sentiment1 = {
 label_sentiment2 = {
     0:'anger', 1:'disgust', 2:'fear', 3:'joy', 4:'neutral sentiment', 5:'sadness', 6:'surprise'
 }
-LLMs = ["ChatGPT","WizardLM","llama2-13b-chat","llama2-7b-chat","ChatGLM-6B","ChatGLM2-6B","llama-7B","llama-13B","llama2-7B","llama2-13B","alpaca","baichuan-7B","baichuan-13B-chat","vicuna-7B","vicuna-13B","gpt4all-13b-snoozy","rwkv-7B","rwkv-14B"]
-
+LLMs = ['gpt-3.5-turbo-1106']
 
 def set_seed(args):
     random.seed(args.seed)
@@ -47,9 +46,9 @@ def set_seed(args):
     torch.cuda.manual_seed(args.seed)
 
 
-def get_test_data(args):
+def get_test_data(data_path):
     tasks = []
-    with open(args.test_data, 'r') as f:
+    with open(data_path, 'r') as f:
         for line in f.readlines():
             data = json.loads(line)
             tasks.append(data)
@@ -143,8 +142,9 @@ def evaluate(args):
     if not os.path.exists(eval_dir):
         os.makedirs(eval_dir)
 
-    eval_path = eval_dir + f'eval_{args.version}.jsonl'
-    results = get_test_data(args)
+    eval_path = eval_dir + 'eval_results.jsonl'
+    data_path = eval_dir + 'generation.jsonl'
+    results = get_test_data(data_path)
     result_dict = {}
     success_num = 0
 
@@ -306,14 +306,14 @@ def evaluate(args):
                 f.write('\n')
 
 
-def evaluate_sbl(args):
+def evaluate_selfbleu(args):
     results_df = pd.DataFrame(
         columns=['sentiment', 'topic', 'multi', 'length', 'keyword', 'detoxic', 'average'], 
         index=LLMs
     )
 
     for model in LLMs:
-        tot_sbl = 0
+        tot_selfbleu = 0
         for task in ['sentiment', 'topic', 'multi', 'length', 'keyword', 'detoxic']:
             data_path = f'./{args.save_fold}/{model}/{task}.jsonl'
             results = []
@@ -323,9 +323,9 @@ def evaluate_sbl(args):
                     results.append(data['text'])
 
             bleu_score = np.around(calc_self_bleu(results), decimals=4)
-            tot_sbl += bleu_score
+            tot_selfbleu += bleu_score
             results_df.loc[model, task] = bleu_score
-        results_df.loc[model, 'average'] = np.around(tot_sbl/6, decimals=4)
+        results_df.loc[model, 'average'] = np.around(tot_selfbleu/6, decimals=4)
 
     eval_path = f'./{args.save_fold}/' + 'self_bleu.csv'
     results_df.to_csv(eval_path)
@@ -336,19 +336,15 @@ if __name__ == "__main__":
     parser.add_argument("--seed", default=42, type=int)
     parser.add_argument("--model", default='ChatGPT', type=str)
     parser.add_argument("--task", default='sentiment', type=str)
-    parser.add_argument("--mode", default='cal_sbl', type=str)
+    parser.add_argument("--mode", default='evaluate', type=str, choices=['evaluate', 'evaluate_few_shot'])
     parser.add_argument("--save_fold", default='results_zero_shot', type=str)
-    parser.add_argument("--test_data", default='./results_zero_shot/ChatGPT/detoxic_lite.jsonl', type=str)
     # decoding
-    parser.add_argument("--top_k", default=200, type=int)
     parser.add_argument("--top_p", default=0.9, type=float)
     parser.add_argument("--max_len", default=300, type=int)
-    parser.add_argument("--min_len", default=300, type=int)
     parser.add_argument("--length_penalty", default=1, type=int)
     parser.add_argument("--repetition_penalty", default=1, type=int)
     parser.add_argument("--temperature", default=1.0, type=float)
     # gpu
-    parser.add_argument("--gpudevice", type=str, default='6')
     parser.add_argument("--device", type=str, default='cuda')
     parser.add_argument('--local_rank', default=0, type=int, help='node rank for distributed training')
     parser.add_argument('--gpus', default=1, type=int, help='number of gpus per node')
@@ -357,9 +353,7 @@ if __name__ == "__main__":
     args = parser.parse_args()
     set_seed(args)
 
-    os.environ['CUDA_VISIBLE_DEVICES'] = args.gpudevice
-
-    if args.mode == 'cal_sbl':
-        evaluate_sbl(args)
+    if args.mode == 'cal_selfbleu':
+        evaluate_selfbleu(args)
     else:
         evaluate(args)
