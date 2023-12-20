@@ -18,7 +18,6 @@ from transformers import LlamaTokenizer, LlamaForCausalLM, GenerationConfig
 from transformers import AutoModel, AutoModelForCausalLM
 from transformers import AutoTokenizer, AutoConfig
 
-from utils.query_huggingface import query, parse_topic_dict, parse_sentiment_dict
 from utils.perspective import detect_toxic
 from utils.query_llms import *
 from utils.eval_utils import *
@@ -53,37 +52,6 @@ def get_test_data(data_path):
             data = json.loads(line)
             tasks.append(data)
     return tasks
-
-
-def eval_topic(args, text, label):
-    while 1:
-        response = query('cardiffnlp/tweet-topic-21-multi', text)
-        if type(response) == list:
-            break
-        else:
-            time.sleep(10)
-    res_dict = parse_topic_dict(response)
-    first_key = next(iter(res_dict))
-    target_value = res_dict[label]
-    return first_key, target_value >= 0.5
-
-
-def eval_sentiment(args, text, label):
-    model = None
-    if label in ['negative sentiment', 'neutral sentiment', 'positive sentiment']:
-        model = 'cardiffnlp/twitter-roberta-base-sentiment-latest'
-    elif label in ['anger', 'disgust', 'fear', 'joy', 'sadness', 'surprise']:
-        model = 'j-hartmann/emotion-english-roberta-large'
-    while 1:
-        response = query(model, text)
-        if type(response) == list:
-            break
-        else:
-            time.sleep(10)
-    res_dict = parse_sentiment_dict(response)
-    first_key = next(iter(res_dict))
-    first_value = res_dict[first_key]
-    return first_key, first_key == label
 
 
 def classify_topic(args, model, tokenizer, text, label):
@@ -159,8 +127,7 @@ def evaluate(args):
             task = results[i]
             task['text'] = extract_text(task['text']).strip()
             first_key, correct = classify_topic(args, model, tokenizer, task['text'], task['label'])
-            # use api
-            # first_key, correct = eval_topic(res, task['label'])
+
             result_dict = {
                 'instruction': task['instruction'], 'text': task['text'], 'label': task['label'], 
                 'generate_label': first_key, 'success': str(int(correct))
@@ -185,8 +152,7 @@ def evaluate(args):
             task = results[i]
             task['text'] = extract_text(task['text']).strip()
             first_key, correct = classify_sentiment(args, model1, model2, tokenizer1, tokenizer2, task['text'], task['label'])
-            # use api
-            # first_key, correct = eval_topic(task['text'], task['label'])
+
             result_dict = {
                 'instruction': task['instruction'], 'text': task['text'], 'label': task['label'], 
                 'generate_label': first_key, 'success': str(int(correct))
@@ -335,7 +301,7 @@ if __name__ == "__main__":
     parser = argparse.ArgumentParser()
     parser.add_argument("--seed", default=42, type=int)
     parser.add_argument("--model", default='ChatGPT', type=str)
-    parser.add_argument("--task", default='sentiment', type=str)
+    parser.add_argument("--task", default='sentiment', type=str, choices=["sentiment", "topic", "multi", "length", "keyword", "detoxic"])
     parser.add_argument("--mode", default='evaluate', type=str, choices=['evaluate', 'evaluate_few_shot'])
     parser.add_argument("--save_fold", default='results_zero_shot', type=str)
     # decoding

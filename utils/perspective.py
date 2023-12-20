@@ -7,8 +7,8 @@ import os
 
 
 def detect_toxic(text):
-    # Replace with your own Perspective API key
-    PERSPECTIVE_API_KEY = ''
+    # Replace with your own Perspective API Key
+    PERSPECTIVE_API_KEY = 'your Perspective API Key'
 
     max_tries = 10
     num_tries = 0

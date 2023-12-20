@@ -12,8 +12,10 @@ from http import HTTPStatus
 from dashscope import Generation
 
 
-openai.api_key = 'openai api key'
-qwen_api_key = 'qwen api key'
+# Replace with your own OpenAI API Key
+openai.api_key = 'your OpenAI API Key'
+# Replace with your own Qwen API Key
+qwen_api_key = 'your Qwen API Key'
 
 def query_chatgpt(model,
                 prompt,
