@@ -51,3 +51,17 @@ python evaluate.py --model=$model --task=$task --mode=$mode
 Once LLM's evaluation results on all CTG tasks have been generated, the final CoDI-Eval score can be obtained using `statistic.py`.
 
 You first need to modify line 324 in `statistic.py` (LLMs = []) and list the LLMs you want to evaluate. Then, depending on whether your experiment results in a zero-shot or a few-shot, run `python statistic.py --save_fold=results_zero_shot` or `python statistic.py --save_fold=results_few_shot`. The final statistical results will be in `f'./{args.save_fold}/statistic.csv'`.
+
+### Citation
+Please consider citing our work if you want to use CoDI-Eval in your work:
+
+```bibtex
+@misc{chen2024benchmarking,
+      title={Benchmarking Large Language Models on Controllable Generation under Diversified Instructions}, 
+      author={Yihan Chen and Benfeng Xu and Quan Wang and Yi Liu and Zhendong Mao},
+      year={2024},
+      eprint={2401.00690},
+      archivePrefix={arXiv},
+      primaryClass={cs.CL}
+}
+```
