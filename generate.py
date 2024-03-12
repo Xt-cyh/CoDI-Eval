@@ -124,13 +124,13 @@ def generate(args):
             if args.mode == 'generate':
                 prompt = f"Instruction: {task['instruction']}\nResponse:"
                 if 'llama2' in args.model:
-                    prompt = get_llama2_prompt(prompt, system_content)
+                    prompt = get_llama2_prompt(prompt, [], system_content)
                 else:
                     prompt = system_content + '\n' + prompt
             else:
                 prompt = few_shot_examples + f"\n6.Instruction: {task['instruction']}\nResponse:"
                 if 'llama2' in args.model:
-                    prompt = get_llama2_prompt(prompt, system_content)
+                    prompt = get_llama2_prompt(prompt, [], system_content)
                 else:
                     prompt = system_content + '\n' + prompt
 
