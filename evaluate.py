@@ -312,9 +312,6 @@ if __name__ == "__main__":
     parser.add_argument("--temperature", default=1.0, type=float)
     # gpu
     parser.add_argument("--device", type=str, default='cuda')
-    parser.add_argument('--local_rank', default=0, type=int, help='node rank for distributed training')
-    parser.add_argument('--gpus', default=1, type=int, help='number of gpus per node')
-    parser.add_argument('--nodes', default=1, type=int, metavar='N')
 
     args = parser.parse_args()
     set_seed(args)
